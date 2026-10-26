@@ -1,0 +1,15 @@
+name: Group Trailer
+description: Shows a local trailer scene in a player window on Group pages
+version: 0.1.0
+ui:
+  javascript:
+    - group-trailer.js
+  css:
+    - group-trailer.css
+settings:
+  enabled:
+    displayName: Enable Group Trailer
+    type: BOOLEAN
+  defaultMute:
+    displayName: Default mute trailer
+    type: BOOLEAN

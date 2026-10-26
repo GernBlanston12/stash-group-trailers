@@ -1,0 +1,73 @@
+/* Group Trailer – flush right, banner-height layout
+   Scoped so it does not affect the edit form. */
+
+/* Constrain the synopsis only on the view page */
+.detail-header:not(.edit) .group-details .synopsis,
+.detail-header:not(.edit) .group-details .TruncatedText,
+.detail-header:not(.edit) .group-details .detail-item.synopsis {
+  max-height: 8rem;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+}
+
+/* Make the header row a flex container that stretches children to full height
+   Only on the non-edit view */
+.detail-header:not(.edit) .row,
+.detail-header:not(.edit) > .row,
+#group-page .detail-header:not(.edit) .row {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  min-height: 240px;
+}
+
+/* Left details column takes remaining space (view only) */
+.detail-header:not(.edit) .group-details {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+/* Trailer slot: flush right, full height of the banner, no padding/border */
+.group-trailer-slot {
+  flex: 0 0 42%;
+  max-width: 42%;
+  min-width: 280px;
+  margin: 0;
+  padding: 0;
+  align-self: stretch;
+  display: flex;
+  box-sizing: border-box;
+}
+
+.group-trailer-video {
+  width: 100%;
+  height: 100%;
+  max-height: none;
+  object-fit: cover;
+  background: #000;
+  border-radius: 0;
+  display: block;
+}
+
+/* On narrower screens fall back to stacking */
+@media (max-width: 1199px) {
+  .detail-header:not(.edit) .row,
+  .detail-header:not(.edit) > .row,
+  #group-page .detail-header:not(.edit) .row {
+    flex-wrap: wrap;
+  }
+
+  .group-trailer-slot {
+    flex: 0 0 100%;
+    max-width: 100%;
+    min-width: 0;
+    height: 240px;
+  }
+
+  .group-trailer-video {
+    height: 240px;
+    object-fit: contain;
+  }
+}
